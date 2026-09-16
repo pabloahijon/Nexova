@@ -9,7 +9,7 @@ Integrantes:
  - Pablo Ahijon Hormigos
  - Irene Caraballo Jerez
  - Anais Chiquito Patiño
- - Hugo Fernandez White
+ - Hugo Fernandez Blanco
 
 Portavoz: 
   - Pablo Ahijon Hormigos
