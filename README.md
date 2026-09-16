@@ -23,16 +23,16 @@ Portavoz:
 ### Responsabilidades iniciales
 
 - Pablo Ahijón Hormigos
-  - Gestión de configuración
-  - Coordinación y seguimiento del proyecto
+  - Portavoz del equipo
+  - Repositorio y control de versiones
 
 - Irene Caraballo Jerez
   - Pruebas y verificación
   - Seguimiento de criterios de aceptación
  
 - Anaís Chiquito Patiño
-  - Portavoz del equipo
-  - Repositorio y control de versiones
+  - Gestión de configuración
+  - Coordinación y seguimiento del proyecto
 
 - Hugo Fernández Blanco
   - Gestión del producto
