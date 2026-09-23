@@ -16,6 +16,7 @@ Integrantes:
  - Irene Caraballo Jerez
  - Anais Chiquito Patiño
  - Hugo Fernandez Blanco
+ - Ronald Denis Pilataxi Lema
 
 Portavoz: 
   - Pablo Ahijon Hormigos
@@ -37,6 +38,10 @@ Portavoz:
 - Hugo Fernández Blanco
   - Gestión del producto
   - Requisitos y backlog
+    
+- Ronald Denis Pilataxi Lema
+  - Requisitos y backlog
+  - Repositorio y control de versiones
 
 > Estas responsabilidades son iniciales y podrán modificarse durante el desarrollo del proyecto.
 
@@ -69,7 +74,7 @@ El proyecto seguirá un proceso iterativo e incremental basado en:
 - AI_USAGE.md
 
 ## Estado del proyecto
-### Sprint 0 - Preparación y planificación
+### Sesión 1 - Preparación y planificación
 
 Completado:
 
@@ -129,3 +134,65 @@ Motor de plantillas utilizado para generar vistas HTML.
 ### URL local
 
 - http://localhost:8080
+
+### Sesión 2 - Github y flujo profesional de desarrollo
+
+## Documentación del proyecto
+
+La documentación del proyecto se mantiene en:
+
+- `docs/technical/`: base técnica, dependencias y ejecución.
+- `docs/diagrams/`: diagramas y modelos.
+- `docs/decisions/`: decisiones técnicas relevantes.
+
+## Plan de Gestión de Configuración
+
+### Rama principal
+
+La rama principal del proyecto es `main`. No se realizarán cambios relevantes directamente sobre ella.
+
+### Ramas y commits
+
+Las ramas seguirán el formato:
+
+`<tipo>/<issue>-descripcion-corta`
+
+Tipos utilizados: `feat`, `fix`, `docs` y `refactor`.
+
+### Flujo de trabajo
+
+El flujo de trabajo será:
+
+`Issue → Branch → Commit → Push → Pull Request → Review → Merge → Done`
+
+Cada cambio relevante estará asociado a una Issue y se desarrollará en una rama independiente.
+
+### Pull Requests y revisión
+
+Los cambios relevantes se integrarán en `main` mediante Pull Request.
+
+Toda Pull Request relevante deberá ser revisada por otro miembro del equipo antes de realizar el merge.
+
+### Protección de main
+
+- No se realizará push directo a `main`.
+- Todo cambio relevante tendrá una Issue asociada.
+- Los cambios se integrarán mediante Pull Request.
+- Las Pull Requests relevantes serán revisadas por otro integrante.
+
+### Archivos excluidos
+
+El `.gitignore` evitará versionar archivos generados o locales, como:
+
+- `target/`
+- `*.log`
+- `.env`
+- `.vscode/`
+
+### Conflictos
+
+Los conflictos se resolverán revisando los cambios afectados entre los miembros implicados, conservando la solución correcta y comprobando posteriormente el funcionamiento del proyecto.
+
+### Integración
+
+Antes de realizar el merge se comprobará que se cumplen los criterios de aceptación, que el proyecto compila correctamente y que la Pull Request ha sido revisada.
