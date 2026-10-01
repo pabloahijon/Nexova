@@ -14,13 +14,15 @@ public class Property {
 
     private String title;
     private String city;
+    private String type;
 
     public Property() {
     }
 
-    public Property(String title, String city) {
+    public Property(String title, String city, String type) {
         this.title = title;
         this.city = city;
+        this.type = type;
     }
 
     public Long getId() {
@@ -41,5 +43,13 @@ public class Property {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
