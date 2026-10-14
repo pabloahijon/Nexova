@@ -5,6 +5,7 @@ import es.uclm.rentalplatform.service.PropertyService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,8 +27,14 @@ public class PropertyController {
     }
 
     @PostMapping
-    public String createProperty(Property property) {
-        propertyService.save(property);
+    public String createProperty(@ModelAttribute("property") Property property, Model model) {
+        try {
+            propertyService.save(property);
+        } catch (IllegalArgumentException exception) {
+            model.addAttribute("publicationError", exception.getMessage());
+            model.addAttribute("properties", propertyService.findAll());
+            return "properties";
+        }
         return "redirect:/properties";
     }
 }

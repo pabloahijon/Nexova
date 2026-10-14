@@ -267,6 +267,17 @@
             gap: 20px;
         }
 
+        .publication-error {
+            margin-bottom: 24px;
+            padding: 14px;
+            border: 1px solid #b42318;
+            border-radius: 9px;
+            background: #fff1f0;
+            color: #8a1c13;
+            font-weight: 650;
+            scroll-margin-top: 90px;
+        }
+
         .form-group label {
             display: block;
             font-size: 13px;
@@ -587,6 +598,9 @@
               th:object="${property}"
               method="post">
 
+            <p th:if="${publicationError != null}" th:text="${publicationError}"
+               id="publication-error" class="publication-error" role="alert" tabindex="-1"></p>
+
 
             <!-- TIPO DE INMUEBLE -->
 
@@ -597,8 +611,7 @@
                     <input
                         type="radio"
                         th:field="*{type}"
-                        value="PISO"
-                        required>
+                        value="PISO">
 
                     <div class="type-card">
 
@@ -873,6 +886,14 @@
     </div>
 
 </footer>
+
+<script>
+    const publicationError = document.getElementById('publication-error');
+    if (publicationError) {
+        publicationError.focus({preventScroll: true});
+        publicationError.scrollIntoView({block: 'center'});
+    }
+</script>
 
 </body>
 </html>
