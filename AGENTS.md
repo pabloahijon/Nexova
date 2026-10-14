@@ -42,3 +42,20 @@ Before implementing a task:
 - Do not remove tests to make the build pass
 - Do not integrate or approve changes
 
+## Skill: Review persistence implementation
+
+When reviewing a persistence implementation:
+
+1. Review entities, repositories, services and controllers.
+2. Verify that business logic is kept outside controllers.
+3. Review entity identifiers, JPA relationships and cardinalities.
+4. Review the dependencies and H2/JPA configuration.
+5. Check that persistence is implemented through the expected architecture:
+   Controller -> Service -> Repository -> Persistence.
+
+### Agent limits
+
+- Do not invent requirements or relationships.
+- Do not expand the scope of the issue.
+- Do not approve or integrate changes.
+- The team must execute the final verification and decide whether the implementation is accepted.
