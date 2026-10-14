@@ -32,7 +32,14 @@ Antes de solicitar una propuesta al agente, el equipo plantea el siguiente plan:
 
 10. Comprobar mediante la consola H2 que el inmueble se ha almacenado realmente en la base de datos y puede recuperarse posteriormente.
 
-### Dependencias, supuestos y dudas
+### Decisiones del equipo para este hito
+
+- `Owner` y su relación con `Property` quedan pendientes: la issue #4 no exige almacenar la identidad del propietario. No se implementan autenticación, login, permisos ni gestión de usuarios.
+- Se mantiene H2 en memoria. La persistencia se comprueba mediante JPA y la consola H2 durante la ejecución, sin exigir conservación entre reinicios.
+- Título y ciudad son obligatorios. Se conserva `type` sin imponer su obligatoriedad.
+- Se mantiene el flujo Controller -> Service -> Repository -> Entity y la interfaz Thymeleaf.
+
+### Dependencias, supuestos y dudas del plan previo
 
 - Se mantendrá la arquitectura actual del proyecto.
 - Se utilizarán Spring Data JPA y H2, ya presentes en el proyecto.
