@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+
 @Entity
 public class Property {
 
@@ -15,14 +16,16 @@ public class Property {
     private String title;
     private String city;
     private String type;
+    private String description;
 
     public Property() {
     }
 
-    public Property(String title, String city, String type) {
+    public Property(String title, String city, String type, String description) {
         this.title = title;
         this.city = city;
         this.type = type;
+        this.description = description;
     }
 
     public Long getId() {
@@ -31,6 +34,13 @@ public class Property {
 
     public String getTitle() {
         return title;
+    }
+    public String getDescription(){
+        return description;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
     }
 
     public void setTitle(String title) {
