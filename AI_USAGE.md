@@ -72,6 +72,27 @@ La verificación realizada incluyó:
 
 Estas comprobaciones se realizaron satisfactoriamente.
 
+Durante el desarrollo del modulo "Consultar Inmuebles" y la integración del campo Descripción, usamos a nuestro agente como un asistente tecnico convencional.
+
+Casos de Uso
+
+# Diseño y arquitectura de consultar inmuebles
+Confirmar las necesidades de la historia del usuario, cumpliendo asi la navegacion entre la vista general y la ficha de detalle.
+Validacion de nuestra pagina web siguiendo la arquitectura de 4 capas (Entidad, Repositorio, Servicio y Controlador)guiando el diseño de las buenas practicas con esta arquitectura, confirmando la vista detallada mediante enlace directo.
+
+
+# Creacion de la ficha detalle y Enlace de Visitas
+Conexion de nuestro listado principal 'properties.html' con la nueva lista individual 'property-detail.html'
+Nos indico exactamente como poner el boton o enlace en cada tarjeta de nuestro listado para que al pulsarlo abra la ficha individual del inmueble correcto.
+Nos ayudo a configurar la ruta web en el codigo del servidor ('PropertyController') para que detecte que inmueble ha pinchado nuestro usuario, recupere sus datos y se los mande a pantalla.
+
+
+
+# Añadiendo el campo description
+
+Diseñamos la incorporación del atributo 'description' en la entidad property sin romper los test y el constructor legacy. Debido a la observacion de que no habria informacion mas extendidada al consultar el inmueble mas a detalles por parte del cliente. La IA identifico la necesidad de sobrecargar los constructores para java pasando se soportar de 3 a 4 parametros, al igual que los tests.
+
+
 ### Resultado
 
 El equipo dispone de un flujo funcional de publicación de inmuebles, con persistencia mediante Spring Data JPA y H2, validaciones y pruebas.
