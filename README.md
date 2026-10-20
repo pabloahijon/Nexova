@@ -1,4 +1,3 @@
-
 ## Nexova
 Proyecto de laboratorio para la asignatura Ingeniería del Software II 
 
