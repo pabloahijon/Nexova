@@ -1,6 +1,7 @@
 package es.uclm.rentalplatform.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,9 @@ public class PropertyService {
 
     public List<Property> findAll() {
         return propertyRepository.findAll();
+    }
+    public Optional<Property> findById(Long id) {
+        return propertyRepository.findById(id);
     }
 
     public Property save(Property property) {

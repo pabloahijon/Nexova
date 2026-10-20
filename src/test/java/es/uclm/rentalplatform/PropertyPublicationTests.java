@@ -35,8 +35,8 @@ class PropertyPublicationTests {
 
     @Test
     void savesAndRetrievesValuesWithDistinctGeneratedIdentifiers() {
-        Property first = service.save(new Property("Piso luminoso", "Madrid", "PISO"));
-        Property second = service.save(new Property("Casa tranquila", "Toledo", null));
+        Property first = service.save(new Property("Piso luminoso","Madrid", "PISO", "Piso bien iluminado en Madrid"));
+        Property second = service.save(new Property("Casa tranquila", "Toledo", null, "Casa tranquila en medio de Toledo"));
         assertNotNull(first.getId());
         assertNotNull(second.getId());
         assertNotEquals(first.getId(), second.getId());
@@ -55,9 +55,9 @@ class PropertyPublicationTests {
         long count = repository.count();
         for (String invalid : new String[] {null, "", "   "}) {
             assertThrows(IllegalArgumentException.class,
-                    () -> service.save(new Property(invalid, "Madrid", null)));
+                    () -> service.save(new Property(invalid, "Madrid", null, null)));
             assertThrows(IllegalArgumentException.class,
-                    () -> service.save(new Property("Piso", invalid, null)));
+                    () -> service.save(new Property("Piso", invalid, null, null)));
         }
         assertEquals(count, repository.count());
     }
