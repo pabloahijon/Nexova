@@ -164,13 +164,13 @@ Las pruebas implementadas deberían, cuando resulte aplicable:
 
 > Durante S6 el equipo debe introducir de forma controlada al menos un defecto para comprobar si una prueba es capaz de detectarlo.
 
-- **Prueba seleccionada:**  
-- **Comportamiento protegido:**  
-- **Defecto introducido:**  
-- **Resultado esperado:**  
-- **¿La prueba falló?:** Sí / No  
-- **Corrección realizada:**  
-- **Resultado después de corregir:**  
+- **Prueba seleccionada:** CP-04 — rechazarTituloConEspacios
+- **Comportamiento protegido:** Rechazar inmuebles cuyo título contiene únicamente espacios.
+- **Defecto introducido:** Sustitución de isBlank() por isEmpty() en la validación del título de PropertyService.save().
+- **Resultado esperado:** La prueba debe fallar porque el servicio deja de rechazar títulos formados únicamente por espacios.
+- **¿La prueba falló?:** Sí.
+- **Corrección realizada:** Restauración de isBlank() en la validación del título.
+- **Resultado después de corregir:** Las 7 pruebas unitarias vuelven a superarse correctamente. 
 
 ### Evidencia de ejecución
 
