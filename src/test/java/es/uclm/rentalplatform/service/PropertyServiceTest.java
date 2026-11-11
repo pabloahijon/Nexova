@@ -56,4 +56,109 @@ void rechazarTituloNulo() {
 
     verify(repository, never()).save(any(Property.class));
 }
+@Test
+void rechazarTituloVacio() {
+    // ARRANGE
+    PropertyRepository repository = mock(PropertyRepository.class);
+    PropertyService service = new PropertyService(repository);
+
+    Property inmueble = new Property(
+            "",
+            "Madrid",
+            "PISO",
+            "Piso luminoso"
+    );
+
+    // ACT + ASSERT
+    assertThrows(
+            IllegalArgumentException.class,
+            () -> service.save(inmueble)
+    );
+
+    verify(repository, never()).save(any(Property.class));
+}
+@Test
+void rechazarTituloConEspacios() {
+    // ARRANGE
+    PropertyRepository repository = mock(PropertyRepository.class);
+    PropertyService service = new PropertyService(repository);
+
+    Property inmueble = new Property(
+            "   ",
+            "Madrid",
+            "PISO",
+            "Piso luminoso"
+    );
+
+    // ACT + ASSERT
+    assertThrows(
+            IllegalArgumentException.class,
+            () -> service.save(inmueble)
+    );
+
+    verify(repository, never()).save(any(Property.class));
+}
+@Test
+void rechazarCiudadNula() {
+    // ARRANGE
+    PropertyRepository repository = mock(PropertyRepository.class);
+    PropertyService service = new PropertyService(repository);
+
+    Property inmueble = new Property(
+            "Piso en Madrid",
+            null,
+            "PISO",
+            "Piso luminoso"
+    );
+
+    // ACT + ASSERT
+    assertThrows(
+            IllegalArgumentException.class,
+            () -> service.save(inmueble)
+    );
+
+    verify(repository, never()).save(any(Property.class));
+}
+@Test
+void rechazarCiudadVacia() {
+    // ARRANGE
+    PropertyRepository repository = mock(PropertyRepository.class);
+    PropertyService service = new PropertyService(repository);
+
+    Property inmueble = new Property(
+            "Piso en Madrid",
+            "",
+            "PISO",
+            "Piso luminoso"
+    );
+
+    // ACT + ASSERT
+    assertThrows(
+            IllegalArgumentException.class,
+            () -> service.save(inmueble)
+    );
+
+    verify(repository, never()).save(any(Property.class));
+}
+@Test
+void rechazarCiudadConEspacios() {
+    // ARRANGE
+    PropertyRepository repository = mock(PropertyRepository.class);
+    PropertyService service = new PropertyService(repository);
+
+    Property inmueble = new Property(
+            "Piso en Madrid",
+            "   ",
+            "PISO",
+            "Piso luminoso"
+    );
+
+    // ACT + ASSERT
+    assertThrows(
+            IllegalArgumentException.class,
+            () -> service.save(inmueble)
+    );
+
+    verify(repository, never()).save(any(Property.class));
+}
 }
