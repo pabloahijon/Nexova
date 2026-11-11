@@ -113,13 +113,13 @@ correctamente y que los datos inválidos son rechazados.
 
 | ID caso | Clase / método JUnit | Tipo | Comportamiento protegido | Estado |
 |---|---|---|---|---|
-| CP-01 | PropertyServiceTest / guardarInmuebleValido | Unitaria | Guardado correcto de un inmueble | Pendiente |
-| CP-02 | PropertyServiceTest / rechazarTituloNulo | Unitaria | Rechazo de título nulo | Pendiente |
-| CP-03 | PropertyServiceTest / rechazarTituloVacio | Unitaria | Rechazo de título vacío | Pendiente |
-| CP-04 | PropertyServiceTest / rechazarTituloConEspacios | Unitaria | Rechazo de título con espacios | Pendiente |
-| CP-05 | PropertyServiceTest / rechazarCiudadNula | Unitaria | Rechazo de ciudad nula | Pendiente |
-| CP-06 | PropertyServiceTest / rechazarCiudadVacia | Unitaria | Rechazo de ciudad vacía | Pendiente |
-| CP-07 | PropertyServiceTest / rechazarCiudadConEspacios | Unitaria | Rechazo de ciudad con espacios | Pendiente |
+| CP-01 | PropertyServiceTest / guardarInmuebleValido | Unitaria | Guardado correcto de un inmueble | Implementadas |
+| CP-02 | PropertyServiceTest / rechazarTituloNulo | Unitaria | Rechazo de título nulo | Implementadas |
+| CP-03 | PropertyServiceTest / rechazarTituloVacio | Unitaria | Rechazo de título vacío | Implementadas |
+| CP-04 | PropertyServiceTest / rechazarTituloConEspacios | Unitaria | Rechazo de título con espacios | Implementadas |
+| CP-05 | PropertyServiceTest / rechazarCiudadNula | Unitaria | Rechazo de ciudad nula | Implementadas |
+| CP-06 | PropertyServiceTest / rechazarCiudadVacia | Unitaria | Rechazo de ciudad vacía | Implementadas |
+| CP-07 | PropertyServiceTest / rechazarCiudadConEspacios | Unitaria | Rechazo de ciudad con espacios | Implementadas |
 ### Criterios de diseño
 
 Las pruebas implementadas deberían, cuando resulte aplicable:
@@ -141,14 +141,14 @@ Las pruebas implementadas deberían, cuando resulte aplicable:
 
 ### Checklist general
 
-- [ ] Las pruebas están relacionadas con requisitos, criterios o comportamientos relevantes.
-- [ ] Existen casos válidos, inválidos y límite cuando corresponda.
-- [ ] Las aserciones comprueban resultados significativos.
-- [ ] Las pruebas pueden fallar ante defectos reales relacionados con el comportamiento protegido.
-- [ ] No existen pruebas vacías o que siempre pasen.
-- [ ] No se mezclan demasiados objetivos no relacionados en una misma prueba.
+- [x] Las pruebas están relacionadas con requisitos, criterios o comportamientos relevantes.
+- [x] Existen casos válidos, inválidos y límite cuando corresponda.
+- [x] Las aserciones comprueban resultados significativos.
+- [x] Las pruebas pueden fallar ante defectos reales relacionados con el comportamiento protegido.
+- [x] No existen pruebas vacías o que siempre pasen.
+- [x] No se mezclan demasiados objetivos no relacionados en una misma prueba.
 - [ ] Se han detectado y corregido pruebas frágiles cuando ha sido necesario.
-- [ ] El equipo comprende qué protege cada prueba relevante.
+- [x] El equipo comprende qué protege cada prueba relevante.
 - [ ] Las pruebas pueden ejecutarse de forma reproducible con Maven.
 
 ### Pruebas frágiles, débiles o poco significativas detectadas
@@ -198,16 +198,16 @@ Las pruebas implementadas deberían, cuando resulte aplicable:
 
 ### Estado actual
 
-- [ ] El conjunto de pruebas puede ejecutarse desde Maven.
-- [ ] El build completo finaliza correctamente.
+- [x] El conjunto de pruebas puede ejecutarse desde Maven.
+- [x] El build completo finaliza correctamente.
 - [ ] Los fallos existentes están identificados y documentados.
 - [ ] No existen pruebas deshabilitadas o eliminadas únicamente para obtener un build verde.
 
 ### Última ejecución
 
-- **Fecha:**  
-- **Resultado:**  
-- **Incidencias:**  
+- **Fecha:** 11/11/2026
+- **Resultado:** BUILD SUCCESS 
+- **Incidencias:** Ninguna durante la ejecución.
 
 ---
 
