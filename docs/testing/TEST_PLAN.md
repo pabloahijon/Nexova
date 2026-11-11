@@ -11,12 +11,12 @@
 
 ## 1. Identificación
 
-- **Equipo / empresa:**  
-- **Repositorio:**  
+- **Equipo / empresa:** Nexova 
+- **Repositorio:**  https://github.com/pabloahijon/Nexova
 - **Versión del documento:** 0.1  
-- **Responsable de mantener el plan:**  
-- **Sprint / iteración actual:**  
-- **Última actualización:**  
+- **Responsable de mantener el plan:** Equipo Nexova
+- **Sprint / iteración actual:**  Sprint 2/Sesion 6
+- **Última actualización:**  11/11/2026
 
 ---
 
@@ -24,8 +24,17 @@
 
 ### Objetivo
 
-> Indicar brevemente qué pretende conseguir el equipo con las pruebas automatizadas y qué comportamientos considera prioritario proteger.
+El objetivo de las pruebas automatizadas de Nexova es comprobar que
+las funcionalidades principales del sistema funcionan correctamente
+y cumplen los requisitos establecidos.
 
+Se dará prioridad a las reglas de negocio, las validaciones de datos
+y la persistencia de información, con el fin de detectar errores
+y evitar regresiones durante el desarrollo.
+
+Durante la Sesión 6 se priorizarán las pruebas de publicación
+de inmuebles (HU-04), comprobando que los datos válidos se guardan
+correctamente y que los datos inválidos son rechazados.
 ### Prioridades actuales
 
 - Flujos funcionales críticos.
@@ -39,9 +48,9 @@
 
 | Tipo | Cuándo se utiliza | Ejemplos en el proyecto |
 |---|---|---|
-| Unitaria | Para comprobar una clase, método o regla de negocio de forma aislada |  |
-| Integración | Para comprobar la colaboración entre varios componentes o con persistencia |  |
-| Web / controlador | Para comprobar rutas, formularios o respuestas cuando aporte valor |  |
+| Unitaria | Para comprobar una clase o regla de negocio de forma aislada | Validación del título y la ciudad en PropertyService |
+| Integración | Para comprobar la colaboración entre componentes y la base de datos | Guardado y recuperación de inmuebles mediante JPA y H2 |
+| Web / controlador | Para comprobar las peticiones HTTP y los formularios | Publicación de inmuebles desde el formulario web |
 
 > El equipo no tiene que utilizar todos los tipos de prueba en todas las funcionalidades. Debe seleccionar el nivel de prueba adecuado al comportamiento que quiere proteger.
 
@@ -53,22 +62,24 @@
 
 | ID | Funcionalidad / comportamiento | Issue o requisito relacionado | Motivo de prioridad | Estado de pruebas |
 |---|---|---|---|---|
-| FP-01 |  |  |  | Pendiente / Parcial / Cubierto |
-| FP-02 |  |  |  | Pendiente / Parcial / Cubierto |
-| FP-03 |  |  |  | Pendiente / Parcial / Cubierto |
+| FP-01 | Publicar un inmueble con datos válidos | HU-04 | Garantizar que los inmuebles se guardan correctamente | Parcial |
+| FP-02 | Rechazar inmuebles sin título válido | HU-04 | Evitar almacenar inmuebles con información obligatoria incorrecta | Parcial |
+| FP-03 | Rechazar inmuebles sin ciudad válida | HU-04 | Garantizar la integridad de los datos almacenados | Parcial |
 
 ---
 
 ## 4. Catálogo de casos de prueba
 
 > Los casos se diseñan primero en lenguaje natural. Después, cuando proceda, se automatizan con JUnit.
-
 | ID | Funcionalidad | Criterio protegido | Tipo de caso | Entrada / situación | Resultado esperado | Prioridad |
 |---|---|---|---|---|---|---|
-| CP-01 |  |  | Válido |  |  | Alta / Media / Baja |
-| CP-02 |  |  | Inválido |  |  | Alta / Media / Baja |
-| CP-03 |  |  | Límite |  |  | Alta / Media / Baja |
-
+| CP-01 | Publicar inmueble | Guardado de datos válidos | Válido | Título y ciudad correctos | El inmueble se guarda correctamente | Alta |
+| CP-02 | Publicar inmueble | Título obligatorio | Inválido | Título nulo | Se lanza IllegalArgumentException y no se guarda | Alta |
+| CP-03 | Publicar inmueble | Título obligatorio | Inválido | Título vacío | Se lanza IllegalArgumentException y no se guarda | Alta |
+| CP-04 | Publicar inmueble | Título obligatorio | Límite | Título formado solo por espacios | Se lanza IllegalArgumentException y no se guarda | Alta |
+| CP-05 | Publicar inmueble | Ciudad obligatoria | Inválido | Ciudad nula | Se lanza IllegalArgumentException y no se guarda | Alta |
+| CP-06 | Publicar inmueble | Ciudad obligatoria | Inválido | Ciudad vacía | Se lanza IllegalArgumentException y no se guarda | Alta |
+| CP-07 | Publicar inmueble | Ciudad obligatoria | Límite | Ciudad formada solo por espacios | Se lanza IllegalArgumentException y no se guarda | Alta |
 ### Convención
 
 - **Válido:** comprueba comportamiento esperado con datos correctos.
@@ -83,18 +94,16 @@
 > Utilizar esta sección únicamente en los comportamientos donde estas técnicas aporten valor. No es necesario rellenarla para cada prueba.
 
 ### Particiones de equivalencia
-
 | Dato / condición | Partición válida | Partición inválida | Casos asociados |
 |---|---|---|---|
-|  |  |  |  |
-|  |  |  |  |
+| Título del inmueble | Texto no vacío con caracteres distintos de espacios | Valor nulo, cadena vacía o solo espacios | CP-01, CP-02, CP-03, CP-04 |
+| Ciudad del inmueble | Texto no vacío con caracteres distintos de espacios | Valor nulo, cadena vacía o solo espacios | CP-01, CP-05, CP-06, CP-07 |
 
 ### Valores límite
-
 | Dato / condición | Valores límite relevantes | Comportamiento esperado | Casos asociados |
 |---|---|---|---|
-|  |  |  |  |
-|  |  |  |  |
+| Título del inmueble | null, "", "   ", "A" | Rechazar valores nulos, vacíos o con solo espacios; aceptar un carácter válido | CP-01, CP-02, CP-03, CP-04 |
+| Ciudad del inmueble | null, "", "   ", "A" | Rechazar valores nulos, vacíos o con solo espacios; aceptar un carácter válido | CP-01, CP-05, CP-06, CP-07 |
 
 ---
 
@@ -104,9 +113,13 @@
 
 | ID caso | Clase / método JUnit | Tipo | Comportamiento protegido | Estado |
 |---|---|---|---|---|
-| CP-01 |  | Unitaria / Integración / Web |  | Implementada / Pendiente |
-| CP-02 |  | Unitaria / Integración / Web |  | Implementada / Pendiente |
-
+| CP-01 | PropertyServiceTest / guardarInmuebleValido | Unitaria | Guardado correcto de un inmueble | Pendiente |
+| CP-02 | PropertyServiceTest / rechazarTituloNulo | Unitaria | Rechazo de título nulo | Pendiente |
+| CP-03 | PropertyServiceTest / rechazarTituloVacio | Unitaria | Rechazo de título vacío | Pendiente |
+| CP-04 | PropertyServiceTest / rechazarTituloConEspacios | Unitaria | Rechazo de título con espacios | Pendiente |
+| CP-05 | PropertyServiceTest / rechazarCiudadNula | Unitaria | Rechazo de ciudad nula | Pendiente |
+| CP-06 | PropertyServiceTest / rechazarCiudadVacia | Unitaria | Rechazo de ciudad vacía | Pendiente |
+| CP-07 | PropertyServiceTest / rechazarCiudadConEspacios | Unitaria | Rechazo de ciudad con espacios | Pendiente |
 ### Criterios de diseño
 
 Las pruebas implementadas deberían, cuando resulte aplicable:
@@ -274,8 +287,12 @@ Las pruebas implementadas deberían, cuando resulte aplicable:
 
 | Pendiente / mejora | Motivo | Prioridad | Responsable | Estado |
 |---|---|---|---|---|
-|  |  |  |  | Pendiente |
-|  |  |  |  | Pendiente |
+| Implementar pruebas unitarias de PropertyService | Verificar las validaciones de HU-04 | Alta | Equipo Nexova | Pendiente |
+| Ejecutar pruebas con Maven | Comprobar que las pruebas funcionan correctamente | Alta | Equipo Nexova | Pendiente |
+| Realizar demostración verde-rojo-verde | Demostrar que una prueba detecta un defecto real | Alta | Equipo Nexova | Pendiente |
+| Revisar calidad de las pruebas JUnit | Detectar pruebas débiles o frágiles | Alta | Equipo Nexova | Pendiente |
+| Analizar cobertura con JaCoCo en S7 | Identificar comportamientos relevantes sin probar | Media | Equipo Nexova | Pendiente |
+| Analizar calidad con Sonar en S8 | Detectar problemas de calidad y nuevas necesidades de pruebas | Media | Equipo Nexova | Pendiente |
 
 El plan debe actualizarse cuando:
 
@@ -293,10 +310,8 @@ El plan debe actualizarse cuando:
 
 ## 12. Resumen del estado de pruebas
 
-> Completar en 3–5 líneas y mantenerlo actualizado.
-
-- **Principales comportamientos protegidos:**  
-- **Pruebas automatizadas relevantes:**  
-- **Carencias actuales:**  
-- **Próxima prioridad de pruebas:**  
-- **Estado general:** Pendiente / En progreso / Suficiente para la iteración
+- **Principales comportamientos protegidos:** Publicación de inmuebles con datos válidos y validación de los campos obligatorios (título y ciudad).
+- **Pruebas automatizadas relevantes:** Pruebas de integración existentes relacionadas con HU-04.
+- **Carencias actuales:** Pendiente de implementar y verificar las pruebas unitarias de PropertyService.
+- **Próxima prioridad de pruebas:** Implementar pruebas JUnit para los casos CP-01 a CP-07.
+- **Estado general:** En progreso.
