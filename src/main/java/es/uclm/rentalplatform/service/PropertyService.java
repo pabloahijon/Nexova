@@ -25,7 +25,7 @@ public class PropertyService {
     }
 
     public Property save(Property property) {
-        if (property.getTitle() == null || property.getTitle().isBlank()
+       if (property.getTitle() == null || property.getTitle().isBlank()
                 || property.getCity() == null || property.getCity().isBlank()) {
             throw new IllegalArgumentException("El título y la ciudad son obligatorios.");
         }
