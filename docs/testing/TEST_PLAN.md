@@ -221,9 +221,9 @@ Las pruebas implementadas deberían, cuando resulte aplicable:
 
 > Registrar aquí la evidencia mínima de que el conjunto de pruebas puede ejecutarse de forma reproducible fuera del IDE.
 
-- **Fecha de verificación:**  
-- **Rama / commit verificado:**  
-- **Comandos ejecutados:**
+- **Fecha de verificación:**  18/11/2026
+- **Rama / commit verificado:**  docs/documentacion-test
+- **Comandos ejecutados:** 
 
 ```powershell
 .\mvnw.cmd test
@@ -232,10 +232,10 @@ Las pruebas implementadas deberían, cuando resulte aplicable:
 
 - ![Resultado de `test`:](docs/evidences/s7/Resultado_defecto_test)
 - ![Resultado de `verify`:](dosc/evidences/s7/Resultado_defecto_verify.png)  
-- **Número de tests ejecutados:**  
-- **Fallos o errores relevantes:**  
+- **Número de tests ejecutados:**  11
+- **Fallos o errores relevantes:**  0
 - **Informe Surefire revisado:** `target/surefire-reports/`  
-- **Evidencia / enlace:**  
+- **Evidencia / enlace:**  https://github.com/pabloahijon/Nexova/commit/75f58e4e60151f5018f24f0041c0eeb9a873e057
 
 ### 10.2 Cobertura — S7 · JaCoCo
 
