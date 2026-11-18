@@ -179,7 +179,7 @@ Las pruebas implementadas deberían, cuando resulte aplicable:
 .\mvnw.cmd verify
 ```
 
--![Resultado antes del defecto:](docs/evidences/s7/Resultado_antes_verify.png)
+-**Resultado antes del defecto: **
 - **Resultado con el defecto:**  test
 - **Resultado tras la corrección:**  verify
 
@@ -230,8 +230,8 @@ Las pruebas implementadas deberían, cuando resulte aplicable:
 .\mvnw.cmd verify
 ```
 
-- **Resultado de `test`:**  
-- **Resultado de `verify`:**  
+- ![Resultado de `test`:](docs/evidences/s7/Resultado_defecto_test)
+- ![Resultado de `verify`:](dosc/evidences/s7/Resultado_defecto_verify.png)  
 - **Número de tests ejecutados:**  
 - **Fallos o errores relevantes:**  
 - **Informe Surefire revisado:** `target/surefire-reports/`  
