@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexova | Registro de usuarios</title>
+    <link rel="stylesheet" th:href="@{/css/users.css}">
+</head>
+<body>
+
+<header>
+    <a class="brand" href="/">
+        <div class="brand-icon">N</div>
+        <div class="brand-name">Nexo<span>va</span></div>
+    </a>
+    <nav>
+        <a href="/">Inicio</a>
+        <a href="/properties">Inmuebles</a>
+        <a class="active" href="/users/new">Registrarse</a>
+    </nav>
+</header>
+
+<main>
+    <section class="card">
+        <h1>Registrar usuario</h1>
+        <p class="subtitle">Introduce tus datos para crear una cuenta en Nexova.</p>
+
+        <p th:if="${param.registered != null}" class="message success" id="registration-success" role="status">
+            Usuario registrado correctamente.
+        </p>
+
+        <p th:if="${registrationError != null}" th:text="${registrationError}"
+           class="message error" id="registration-error" role="alert"></p>
+
+        <form th:action="@{/users}" th:object="${user}" method="post">
+            <div class="field">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" th:field="*{name}" required>
+            </div>
+            <div class="field">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" th:field="*{email}" required>
+            </div>
+            <button type="submit" class="btn">Registrarse</button>
+        </form>
+    </section>
+</main>
+
+</body>
+</html>
