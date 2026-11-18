@@ -99,6 +99,72 @@ El equipo dispone de un flujo funcional de publicación de inmuebles, con persis
 
 El uso de IA ha permitido apoyar la revisión y mejora de esta funcionalidad sin sustituir la planificación, las decisiones ni la verificación humana.
 
+## Sesión 6 — Uso de IA en el diseño y revisión de pruebas JUnit
+
+### Historia de usuario relacionada
+
+**HU-04 — Publicar un inmueble (#4).**
+
+### Objetivo de la intervención
+
+Utilizar la inteligencia artificial como apoyo para diseñar, implementar y revisar pruebas automatizadas que permitan comprobar las validaciones de la publicación de inmuebles.
+
+### Planificación humana previa
+
+Se estableció como prioridad verificar que la publicación de inmuebles acepta títulos y ciudades válidos y rechaza valores nulos, vacíos o formados únicamente por espacios.
+
+También se decidió mantener la arquitectura existente y utilizar JUnit 5, Mockito y Maven para la implementación y ejecución de las pruebas.
+
+### Propuestas de la IA
+
+La IA colaboró en:
+
+1. La elaboración y actualización del plan de pruebas `docs/testing/TEST_PLAN.md`.
+2. La identificación de siete casos de prueba, CP-01 a CP-07.
+3. La implementación de pruebas unitarias en `PropertyServiceTest.java`.
+4. La utilización de Mockito para simular `PropertyRepository`.
+5. La definición de aserciones para comprobar los resultados y verificar que los inmuebles inválidos no se guardan.
+6. La preparación de una demostración verde-rojo-verde para comprobar la capacidad de detección de errores.
+7. La documentación de los resultados obtenidos.
+
+### Revisión y decisiones humanas
+
+Las propuestas fueron revisadas durante el desarrollo.
+
+Se mantuvieron las validaciones existentes para título y ciudad, sin incorporar requisitos adicionales.
+
+Se comprobó que las pruebas verificaban comportamientos concretos y que los casos inválidos provocaban una excepción `IllegalArgumentException` sin invocar el guardado del repositorio.
+
+### Implementación y verificación
+
+Se implementaron siete pruebas unitarias con JUnit 5 y Mockito.
+
+Las pruebas cubren:
+
+- CP-01: publicación con título y ciudad válidos.
+- CP-02: rechazo de título nulo.
+- CP-03: rechazo de título vacío.
+- CP-04: rechazo de título formado únicamente por espacios.
+- CP-05: rechazo de ciudad nula.
+- CP-06: rechazo de ciudad vacía.
+- CP-07: rechazo de ciudad formada únicamente por espacios.
+
+Para comprobar la eficacia de las pruebas se realizó una demostración verde-rojo-verde:
+
+1. **Verde:** las siete pruebas se ejecutaron correctamente.
+2. **Rojo:** se introdujo temporalmente un defecto sustituyendo `isBlank()` por `isEmpty()` en la validación del título. La prueba CP-04 detectó el defecto y la ejecución falló.
+3. **Verde:** se restauró `isBlank()` y las siete pruebas volvieron a ejecutarse correctamente.
+
+Finalmente, se ejecutó `./mvnw clean verify`, obteniendo `BUILD SUCCESS`.
+
+### Resultado
+
+Se incorporaron siete pruebas unitarias automatizadas y se actualizó el plan de pruebas de Nexova.
+
+La demostración verde-rojo-verde permitió comprobar que las pruebas pueden detectar un defecto real en las validaciones.
+
+La IA se utilizó como herramienta de apoyo. La ejecución de los comandos, la comprobación de resultados y las decisiones sobre los cambios se realizaron mediante intervención humana.
+
 ## Seguimiento del uso de IA
 
 Los futuros usos relevantes de inteligencia artificial se documentarán indicando:

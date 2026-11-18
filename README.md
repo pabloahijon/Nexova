@@ -303,6 +303,79 @@ Para la funcionalidad HU-04 se han realizado las siguientes comprobaciones:
 •	Recuperación de los inmuebles almacenados.
 •	Comprobación de los datos mediante la consola H2.
 •	Verificación del funcionamiento de la aplicación desde la interfaz web.
+
+### Sesión 6 — Pruebas automatizadas con JUnit
+
+Durante la Sesión 6 hemos diseñado e implementado pruebas automatizadas para verificar el comportamiento de la funcionalidad HU-04 — Publicar un inmueble (#4).
+
+Las pruebas se han desarrollado utilizando JUnit 5, siguiendo los criterios establecidos en el plan de pruebas del proyecto.
+
+**Pruebas unitarias**
+
+Las pruebas unitarias se encuentran en:
+
+`src/test/java/es/uclm/rentalplatform/service/PropertyServiceTest.java`
+
+Se han implementado siete casos de prueba:
+
+• CP-01: guardar un inmueble con título y ciudad válidos.
+
+• CP-02: rechazar un inmueble con título nulo.
+
+• CP-03: rechazar un inmueble con título vacío.
+
+• CP-04: rechazar un inmueble con título formado únicamente por espacios.
+
+• CP-05: rechazar un inmueble con ciudad nula.
+
+• CP-06: rechazar un inmueble con ciudad vacía.
+
+• CP-07: rechazar un inmueble con ciudad formada únicamente por espacios.
+
+Las pruebas comprueban que los inmuebles válidos se guardan correctamente y que los datos inválidos provocan una excepción `IllegalArgumentException` sin invocar el método de guardado del repositorio.
+
+**Pruebas de integración**
+
+El proyecto también dispone de pruebas de integración en:
+
+`src/test/java/es/uclm/rentalplatform/PropertyPublicationTests.java`
+
+Estas pruebas verifican el almacenamiento y recuperación de inmuebles mediante Spring Data JPA y H2, las validaciones de los campos obligatorios y el funcionamiento de la publicación desde el formulario web.
+
+**Ejecución de pruebas unitarias**
+
+Para ejecutar únicamente las pruebas de `PropertyService`:
+
+Windows:
+
+`.\mvnw.cmd -Dtest=PropertyServiceTest test`
+
+Linux / macOS:
+
+`./mvnw -Dtest=PropertyServiceTest test`
+
+Para ejecutar todas las pruebas automatizadas se utilizan los comandos indicados en el apartado «Construcción y ejecución».
+
+**Verificación verde-rojo-verde**
+
+Durante la sesión se realizó una demostración verde-rojo-verde para comprobar que las pruebas podían detectar errores reales.
+
+1. Verde: las siete pruebas unitarias se ejecutaron correctamente.
+2. Rojo: se introdujo temporalmente un defecto sustituyendo `isBlank()` por `isEmpty()` en la validación del título. La prueba CP-04 detectó el error y la ejecución finalizó con `BUILD FAILURE`.
+3. Verde: se restauró la validación correcta y las siete pruebas volvieron a ejecutarse satisfactoriamente.
+
+Finalmente, se ejecutó `./mvnw clean verify`, obteniendo `BUILD SUCCESS`.
+
+**Documentación de pruebas**
+
+El plan de pruebas del proyecto se encuentra en:
+
+`docs/testing/TEST_PLAN.md`
+
+Este documento recoge la estrategia de pruebas, los casos diseñados, las particiones de equivalencia, la correspondencia con las pruebas JUnit y los resultados de verificación.
+
+El uso de inteligencia artificial como apoyo durante la sesión se encuentra documentado en `AI_USAGE.md`.
+
 ### Verificación de consulta de inmuebles
 La funcionalidad HU-05 está implementada e integrada en main mediante la PR #19.
 Para completar su verificación se comprobará que:
