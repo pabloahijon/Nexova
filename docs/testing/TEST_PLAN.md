@@ -179,9 +179,9 @@ Las pruebas implementadas deberían, cuando resulte aplicable:
 .\mvnw.cmd verify
 ```
 
-- **Resultado antes del defecto:**  
-- **Resultado con el defecto:**  
-- **Resultado tras la corrección:**  
+-![Resultado antes del defecto:](docs/evidences/s7/Resultado_antes_verify.png)
+- **Resultado con el defecto:**  test
+- **Resultado tras la corrección:**  verify
 
 > La finalidad no es romper el proyecto sin motivo, sino demostrar que la prueba puede detectar el defecto que afirma proteger.
 
