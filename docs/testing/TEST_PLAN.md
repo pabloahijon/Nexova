@@ -240,19 +240,19 @@ Las pruebas implementadas deberían, cuando resulte aplicable:
 ### 10.2 Cobertura — S7 · JaCoCo
 
 - **Informe generado:** `target/site/jacoco/index.html`  
-- **Cobertura observada de forma global:**  
-- **Clase / paquete / comportamiento revisado:**  
+- **Cobertura observada de forma global:** instrucciones 76 % (40 de 168 sin cubrir), ramas 100 % (0 de 8 sin cubrir). 5 clases analizadas, 11 tests ejecutados.
+- **Clase / paquete / comportamiento revisado:** paquete `service`, clase `PropertyService`, método `save(...)`: validación de título y ciudad obligatorios, que es la regla protegida por el defecto deliberado.
 - **Zonas importantes con cobertura insuficiente:**
-  - 
-  - 
+  - Paquete `Web`: 69 % de instrucciones, 3 métodos sin ejecutar. Contiene los controladores y no tiene tests directos.
+  - Clase `RentalplatformApplication` (paquete raíz): 37 %, por el método `main`, que arranca la aplicación.
 
 - **Ramas o casos relevantes no ejercitados:**
-  - 
-  - 
+  - No hay ramas sin recorrer: JaCoCo muestra 0 de 8 ramas sin cubrir, es decir, todas las condiciones de `PropertyService` se ejecutan por sus dos caminos.
+  - Los métodos sin ejecutar del paquete `Web` (3) pueden ocultar casos no probados; se revisan en la justificación.
 
 - **Justificación de zonas no cubiertas cuando proceda:**
-  - 
-  - 
+  - `RentalplatformApplication.main`: es código de arranque de Spring Boot, sin lógica propia. No aporta valor probarlo con un test unitario.
+  - Paquete `Web`: la lógica de negocio está en `service`, que sí está cubierta. Se valorará añadir tests de los controladores si hay requisitos asociados.
 
 > No se exige perseguir un porcentaje concreto por sí mismo. La cobertura debe interpretarse en relación con comportamientos, requisitos, casos de prueba y riesgos reales.
 
