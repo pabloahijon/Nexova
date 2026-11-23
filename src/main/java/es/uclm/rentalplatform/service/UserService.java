@@ -1,5 +1,7 @@
 package es.uclm.rentalplatform.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import es.uclm.rentalplatform.domain.User;
@@ -14,6 +16,10 @@ public class UserService {
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 
     public User register(User user) {

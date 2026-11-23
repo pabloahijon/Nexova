@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexova | Usuarios registrados</title>
+    <link rel="stylesheet" th:href="@{/css/users.css}">
+</head>
+<body>
+
+<header>
+    <a class="brand" href="/">
+        <div class="brand-icon">N</div>
+        <div class="brand-name">Nexo<span>va</span></div>
+    </a>
+    <nav>
+        <a href="/">Inicio</a>
+        <a href="/properties">Inmuebles</a>
+        <a class="active" href="/users">Usuarios</a>
+        <a href="/users/new">Registrarse</a>
+    </nav>
+</header>
+
+<main>
+    <section class="card">
+        <h1>Usuarios registrados</h1>
+        <p class="subtitle">Usuarios almacenados actualmente en Nexova.</p>
+
+        <p th:if="${#lists.isEmpty(users)}" class="empty" id="no-users">
+            Todavía no hay usuarios registrados.
+        </p>
+
+        <table th:unless="${#lists.isEmpty(users)}" id="users-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo electrónico</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.name}">Nombre</td>
+                    <td th:text="${user.email}">correo@example.com</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+</body>
+</html>

@@ -20,6 +20,12 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping
+    public String listUsers(Model model) {
+        model.addAttribute("users", userService.findAll());
+        return "users";
+    }
+
     @GetMapping("/new")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
@@ -34,6 +40,6 @@ public class UserController {
             model.addAttribute("registrationError", exception.getMessage());
             return "user-register";
         }
-        return "redirect:/users/new?registered";
+        return "redirect:/users";
     }
 }
