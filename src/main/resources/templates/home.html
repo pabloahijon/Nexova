@@ -1,13 +1,71 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Rental Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexova | Encuentra tu espacio</title>
+    <link rel="stylesheet" th:href="@{/css/nexova.css}">
 </head>
-<body>
-    <h1>Plataforma de alquiler de
-viviendas</h1>
-    <p>Aplicación Spring Boot en
-ejecución.</p>
+<body class="nx">
+
+<header th:replace="~{fragments/layout :: header}"></header>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">● Plataforma de alquiler de viviendas</div>
+        <h1>Encuentra un lugar que <span>sientas como tuyo.</span></h1>
+        <p>Reserva alojamientos de particulares o publica el tuyo de forma sencilla con Nexova.</p>
+
+        <form class="nx-search" th:action="@{/properties}" method="get">
+            <div class="nx-field">
+                <label for="city">Destino</label>
+                <input type="text" id="city" name="city" placeholder="Ej. Madrid">
+            </div>
+            <div class="nx-field">
+                <label for="checkIn">Entrada</label>
+                <input type="date" id="checkIn" name="checkIn">
+            </div>
+            <div class="nx-field">
+                <label for="checkOut">Salida</label>
+                <input type="date" id="checkOut" name="checkOut">
+            </div>
+            <div class="nx-field">
+                <label for="guests">Huéspedes</label>
+                <input type="number" id="guests" name="guests" min="1" placeholder="1">
+            </div>
+            <button type="submit" class="nx-btn">Buscar</button>
+        </form>
+    </div>
+</section>
+
+<main>
+    <div class="nx-list-header">
+        <div>
+            <h2>Cómo funciona</h2>
+            <p>Tres pasos para tu próxima estancia.</p>
+        </div>
+    </div>
+
+    <div class="nx-steps">
+        <div class="nx-card">
+            <div class="icon">🔎</div>
+            <h3>1 · Busca</h3>
+            <p class="nx-muted">Filtra por ciudad, fechas, precio y comodidades hasta dar con el sitio perfecto.</p>
+        </div>
+        <div class="nx-card">
+            <div class="icon">📅</div>
+            <h3>2 · Reserva</h3>
+            <p class="nx-muted">Reserva al instante o envía una solicitud al propietario y espera su confirmación.</p>
+        </div>
+        <div class="nx-card">
+            <div class="icon">🏡</div>
+            <h3>3 · Disfruta</h3>
+            <p class="nx-muted">Paga, consulta tus reservas y cancela según la política de cada alojamiento.</p>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
 </body>
 </html>

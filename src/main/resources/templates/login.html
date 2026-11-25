@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexova | Iniciar sesión</title>
+    <link rel="stylesheet" th:href="@{/css/nexova.css}">
+</head>
+<body class="nx">
+
+<header th:replace="~{fragments/layout :: header}"></header>
+
+<section th:replace="~{fragments/layout :: hero('Acceso', 'Bienvenido', 'de nuevo.', 'Inicia sesión para reservar, publicar y gestionar tus alojamientos.')}"></section>
+
+<main class="narrow">
+    <section class="nx-card">
+        <div class="nx-card-head">
+            <div>
+                <h2>Iniciar sesión</h2>
+                <p>Accede con tu correo electrónico y tu contraseña.</p>
+            </div>
+            <span class="nx-step">Acceso</span>
+        </div>
+
+        <p th:if="${param.error != null}" class="nx-msg error" role="alert">Correo o contraseña incorrectos.</p>
+        <p th:if="${param.logout != null}" class="nx-msg success" role="status">Has cerrado sesión.</p>
+        <p th:if="${param.registered != null}" class="nx-msg success" role="status">Registro completado. Ya puedes iniciar sesión.</p>
+
+        <form th:action="@{/login}" method="post">
+            <div class="nx-field">
+                <label for="username">Correo electrónico</label>
+                <input type="email" id="username" name="username" placeholder="tu@correo.es" required autofocus>
+            </div>
+            <div class="nx-field">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="nx-btn block">Entrar →</button>
+        </form>
+        <p class="nx-muted" style="margin-top: 20px; text-align: center;">
+            ¿No tienes cuenta? <a th:href="@{/users/new}">Regístrate</a>
+        </p>
+    </section>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>

@@ -4,48 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexova | Usuarios registrados</title>
-    <link rel="stylesheet" th:href="@{/css/users.css}">
+    <link rel="stylesheet" th:href="@{/css/nexova.css}">
 </head>
-<body>
+<body class="nx">
 
-<header>
-    <a class="brand" href="/">
-        <div class="brand-icon">N</div>
-        <div class="brand-name">Nexo<span>va</span></div>
-    </a>
-    <nav>
-        <a href="/">Inicio</a>
-        <a href="/properties">Inmuebles</a>
-        <a class="active" href="/users">Usuarios</a>
-        <a href="/users/new">Registrarse</a>
-    </nav>
-</header>
+<header th:replace="~{fragments/layout :: header}"></header>
+
+<section th:replace="~{fragments/layout :: hero('Administración', 'Usuarios', 'registrados.', 'Usuarios almacenados actualmente en Nexova.')}"></section>
 
 <main>
-    <section class="card">
-        <h1>Usuarios registrados</h1>
-        <p class="subtitle">Usuarios almacenados actualmente en Nexova.</p>
+    <div class="nx-list-header">
+        <div>
+            <h2>Listado de usuarios</h2>
+            <p>Consulta quién está registrado en la plataforma.</p>
+        </div>
+        <span class="nx-counter" th:text="${#lists.size(users)} + ' registrados'">0 registrados</span>
+    </div>
 
-        <p th:if="${#lists.isEmpty(users)}" class="empty" id="no-users">
-            Todavía no hay usuarios registrados.
-        </p>
+    <div class="nx-empty" id="no-users" th:if="${#lists.isEmpty(users)}">
+        <span class="icon">👤</span>
+        <strong>Todavía no hay usuarios registrados.</strong>
+        Cuando alguien se registre aparecerá aquí.
+    </div>
 
-        <table th:unless="${#lists.isEmpty(users)}" id="users-table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Correo electrónico</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="user : ${users}">
-                    <td th:text="${user.name}">Nombre</td>
-                    <td th:text="${user.email}">correo@example.com</td>
-                </tr>
-            </tbody>
-        </table>
+    <section class="nx-card" style="padding: 8px 18px;" th:unless="${#lists.isEmpty(users)}">
+        <div class="nx-tablewrap">
+            <table id="users-table" class="nx-table">
+                <thead>
+                    <tr><th>Nombre</th><th>Correo electrónico</th><th>Tipo</th></tr>
+                </thead>
+                <tbody>
+                    <tr th:each="u : ${users}">
+                        <td><strong th:text="${u.name}">Nombre</strong></td>
+                        <td th:text="${u.email}">correo@example.com</td>
+                        <td><span class="nx-badge" th:text="${u.role != null ? u.role.label : '-'}">Inquilino</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 </main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
 
 </body>
 </html>

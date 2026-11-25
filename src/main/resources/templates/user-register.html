@@ -4,47 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexova | Registro de usuarios</title>
-    <link rel="stylesheet" th:href="@{/css/users.css}">
+    <link rel="stylesheet" th:href="@{/css/nexova.css}">
 </head>
-<body>
+<body class="nx">
 
-<header>
-    <a class="brand" href="/">
-        <div class="brand-icon">N</div>
-        <div class="brand-name">Nexo<span>va</span></div>
-    </a>
-    <nav>
-        <a href="/">Inicio</a>
-        <a href="/properties">Inmuebles</a>
-        <a class="active" href="/users/new">Registrarse</a>
-    </nav>
-</header>
+<header th:replace="~{fragments/layout :: header}"></header>
 
-<main>
-    <section class="card">
-        <h1>Registrar usuario</h1>
-        <p class="subtitle">Introduce tus datos para crear una cuenta en Nexova.</p>
+<section th:replace="~{fragments/layout :: hero('Nueva cuenta', 'Crea tu cuenta y', 'empieza con Nexova.', 'Regístrate como inquilino para reservar o como propietario para publicar alojamientos.')}"></section>
 
-        <p th:if="${param.registered != null}" class="message success" id="registration-success" role="status">
-            Usuario registrado correctamente.
-        </p>
+<main class="narrow">
+    <section class="nx-card">
+        <div class="nx-card-head">
+            <div>
+                <h2>Registro</h2>
+                <p>Introduce tus datos para crear la cuenta.</p>
+            </div>
+            <span class="nx-step">Nuevo usuario</span>
+        </div>
 
         <p th:if="${registrationError != null}" th:text="${registrationError}"
-           class="message error" id="registration-error" role="alert"></p>
+           class="nx-msg error" id="registration-error" role="alert"></p>
 
         <form th:action="@{/users}" th:object="${user}" method="post">
-            <div class="field">
+            <div class="nx-field">
+                <label>Quiero registrarme como</label>
+                <div class="nx-chips">
+                    <label class="nx-chip" th:each="r : ${roles}">
+                        <input type="radio" th:field="*{role}" th:value="${r}" required>
+                        <span th:text="${r.label}">Inquilino</span>
+                    </label>
+                </div>
+            </div>
+            <div class="nx-field">
                 <label for="name">Nombre</label>
-                <input type="text" id="name" th:field="*{name}" required>
+                <input type="text" id="name" th:field="*{name}" placeholder="Ej. Ana Pérez" required>
             </div>
-            <div class="field">
+            <div class="nx-field">
                 <label for="email">Correo electrónico</label>
-                <input type="email" id="email" th:field="*{email}" required>
+                <input type="email" id="email" th:field="*{email}" placeholder="tu@correo.es" required>
             </div>
-            <button type="submit" class="btn">Registrarse</button>
+            <div class="nx-field">
+                <label for="password">Contraseña (mínimo 8 caracteres)</label>
+                <input type="password" id="password" th:field="*{password}" required minlength="8">
+            </div>
+            <button type="submit" class="nx-btn block">Crear cuenta →</button>
         </form>
+        <p class="nx-muted" style="margin-top: 20px; text-align: center;">
+            ¿Ya tienes cuenta? <a th:href="@{/login}">Inicia sesión</a>
+        </p>
     </section>
 </main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
 
 </body>
 </html>
