@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import es.uclm.rentalplatform.domain.Role;
 import es.uclm.rentalplatform.domain.User;
 import es.uclm.rentalplatform.service.UserService;
 
@@ -29,6 +30,7 @@ public class UserController {
     @GetMapping("/new")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
+        model.addAttribute("roles", Role.values());
         return "user-register";
     }
 
@@ -38,8 +40,9 @@ public class UserController {
             userService.register(user);
         } catch (IllegalArgumentException exception) {
             model.addAttribute("registrationError", exception.getMessage());
+            model.addAttribute("roles", Role.values());
             return "user-register";
         }
-        return "redirect:/users";
+        return "redirect:/login?registered";
     }
 }

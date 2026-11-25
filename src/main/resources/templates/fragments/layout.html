@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Cabecera común: <header th:replace="~{fragments/layout :: header}"></header> -->
+<header th:fragment="header">
+    <a class="brand" href="/">
+        <div class="brand-icon">N</div>
+        <div class="brand-name">Nexo<span>va</span></div>
+    </a>
+
+    <nav>
+        <a href="/">Inicio</a>
+        <a href="/properties">Alojamientos</a>
+
+        <th:block th:if="${currentUser != null}">
+            <a th:href="@{/reservations}">Mis reservas</a>
+            <a th:href="@{/wishlist}">Favoritos</a>
+            <th:block th:if="${isOwner}">
+                <a th:href="@{/owner/properties}">Mis propiedades</a>
+                <a th:href="@{/owner/reservations}">Solicitudes</a>
+            </th:block>
+            <span class="nx-user" th:text="${currentUser.name} + ' · ' + ${currentUser.role.label}">Nombre · Rol</span>
+            <form class="nx-inline" th:action="@{/logout}" method="post">
+                <button type="submit" class="nx-linkbtn">Cerrar sesión</button>
+            </form>
+        </th:block>
+
+        <th:block th:if="${currentUser == null}">
+            <a th:href="@{/login}">Iniciar sesión</a>
+            <a class="publish-nav" th:href="@{/users/new}">Registrarse</a>
+        </th:block>
+    </nav>
+</header>
+
+<!-- Banda de título: <section th:replace="~{fragments/layout :: hero('Etiqueta', 'Texto y', 'texto en verde.', 'Subtítulo')}"></section> -->
+<section class="hero" th:fragment="hero(badge, title, highlight, text)">
+    <div class="hero-content">
+        <div class="hero-badge" th:text="'● ' + ${badge}">● Etiqueta</div>
+        <h1><th:block th:text="${title}">Título</th:block> <span th:text="${highlight}">destacado.</span></h1>
+        <p th:text="${text}">Subtítulo</p>
+    </div>
+</section>
+
+<!-- Pie común: <footer th:replace="~{fragments/layout :: footer}"></footer> -->
+<footer th:fragment="footer">
+    <div><strong>Nexova</strong> · Encuentra tu espacio.</div>
+    <div>© 2026 Nexova</div>
+</footer>
+
+</body>
+</html>

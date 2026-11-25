@@ -1,0 +1,194 @@
+/* =====================================================================
+   Nexova · hoja de estilos compartida
+   Misma identidad visual que properties.html (verde, tarjetas redondeadas).
+   - Reglas de página: bajo body.nx
+   - Componentes nx-*: válidos también dentro de properties.html
+   ===================================================================== */
+:root {
+    --green: #16825d; --green-dark: #0f684a; --green-light: #eaf7f1; --green-border: #cce8dc;
+    --text: #17221e; --muted: #6b7772; --background: #f6f8f7; --white: #fff; --border: #e3e8e5;
+    --error: #b42318; --error-bg: #fff1f0; --warn: #8a5a00; --warn-bg: #fff8e6;
+}
+
+body.nx { margin: 0; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          background: var(--background); color: var(--text); line-height: 1.45; }
+body.nx *, .nx-filters *, .nx-chip * { box-sizing: border-box; }
+.nx h1, .nx h2, .nx h3, .nx p { margin: 0; }
+.nx a { color: var(--green); }
+
+/* ---------- Cabecera ---------- */
+.nx header { height: 74px; background: #fff; border-bottom: 1px solid var(--border); display: flex; align-items: center;
+             justify-content: space-between; padding: 0 7%; position: sticky; top: 0; z-index: 100; }
+.nx .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--text); }
+.nx .brand-icon { width: 38px; height: 38px; background: var(--green); color: #fff; border-radius: 10px;
+                  display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.nx .brand-name { font-size: 23px; font-weight: 750; letter-spacing: -0.5px; }
+.nx .brand-name span { color: var(--green); }
+.nx nav { display: flex; align-items: center; gap: 26px; }
+.nx nav a { color: #56625d; text-decoration: none; font-size: 14px; font-weight: 500; }
+.nx nav a:hover { color: var(--green); }
+nav .publish-nav { background: var(--green); color: #fff !important; padding: 10px 17px; border-radius: 8px; }
+nav .publish-nav:hover { background: var(--green-dark); }
+nav .nx-user { font-size: 13px; color: var(--muted); background: var(--green-light); border: 1px solid var(--green-border);
+               padding: 6px 11px; border-radius: 20px; font-weight: 600; }
+nav form.nx-inline { display: inline; margin: 0; }
+.nx-linkbtn { background: none; border: 0; padding: 0; font: inherit; font-size: 14px; font-weight: 500; color: #56625d; cursor: pointer; }
+.nx-linkbtn:hover { color: var(--green); }
+
+/* ---------- Hero ---------- */
+.nx .hero { background: radial-gradient(circle at 90% 20%, #dff4e9 0%, transparent 30%), linear-gradient(135deg, #f4fbf7 0%, #fff 70%);
+            border-bottom: 1px solid var(--green-border); padding: 60px 7% 55px; }
+.nx .hero-content { max-width: 1200px; margin: auto; }
+.nx .hero-badge { display: inline-block; background: var(--green-light); color: var(--green-dark); border: 1px solid var(--green-border);
+                  padding: 7px 12px; border-radius: 30px; font-size: 13px; font-weight: 650; margin-bottom: 20px; }
+.nx .hero h1 { font-size: clamp(34px, 5vw, 54px); max-width: 720px; line-height: 1.05; letter-spacing: -2px; margin-bottom: 18px; }
+.nx .hero h1 span { color: var(--green); }
+.nx .hero p { color: var(--muted); font-size: 18px; line-height: 1.6; max-width: 620px; }
+
+/* ---------- Contenido ---------- */
+.nx main { width: 86%; max-width: 1200px; margin: 50px auto 80px; }
+.nx main.narrow { max-width: 640px; margin-top: -30px; position: relative; }
+.nx-card { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 35px; margin-bottom: 28px;
+           box-shadow: 0 8px 30px rgba(22, 130, 93, 0.06); }
+.nx-card h2 { font-size: 23px; margin-bottom: 8px; }
+.nx-card h3 { font-size: 17px; margin-bottom: 6px; }
+.nx-card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 26px; }
+.nx-card-head p, .nx-muted { color: var(--muted); font-size: 14px; }
+.nx-step { background: var(--green-light); color: var(--green); font-size: 12px; font-weight: 700; padding: 7px 11px; border-radius: 20px; white-space: nowrap; }
+.nx-list-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 25px; gap: 16px; flex-wrap: wrap; }
+.nx-list-header h2 { font-size: 27px; margin-bottom: 5px; }
+.nx-list-header p { color: var(--muted); font-size: 14px; }
+.nx-counter { color: var(--green); background: var(--green-light); border: 1px solid var(--green-border); padding: 7px 12px;
+              border-radius: 20px; font-size: 13px; font-weight: 650; }
+
+/* ---------- Formularios ---------- */
+.nx-field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+.nx-field > label { font-size: 13px; font-weight: 650; }
+.nx-field input[type="text"], .nx-field input[type="email"], .nx-field input[type="password"], .nx-field input[type="number"],
+.nx-field input[type="date"], .nx-field input[type="url"], .nx-field select, .nx-field textarea {
+    width: 100%; padding: 13px 14px; border: 1px solid #dce2df; border-radius: 9px; font-size: 14px; font-family: inherit;
+    color: var(--text); background: #fff; outline: none; transition: .2s; }
+.nx-field input:focus, .nx-field select:focus, .nx-field textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(22,130,93,.10); }
+.nx-row > .nx-field, .nx-row input { min-width: 0; }
+.nx-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; }
+.nx-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.nx-chip { display: inline-flex; align-items: center; gap: 9px; border: 1.5px solid var(--border); border-radius: 12px; padding: 11px 15px;
+           font-size: 14px; cursor: pointer; background: #fff; transition: all .2s ease; }
+.nx-chip:hover { border-color: var(--green); background: #fbfefc; }
+.nx-chip:has(input:checked) { border-color: var(--green); background: var(--green-light); box-shadow: 0 0 0 2px rgba(22,130,93,.08); }
+.nx-chip input { margin: 0; accent-color: var(--green); }
+
+/* ---------- Botones y mensajes ---------- */
+.nx-btn { display: inline-block; background: var(--green); color: #fff !important; border: 0; border-radius: 9px; padding: 13px 22px;
+          font-size: 14px; font-weight: 650; cursor: pointer; text-decoration: none; transition: .2s; font-family: inherit; }
+.nx-btn:hover { background: var(--green-dark); transform: translateY(-1px); }
+.nx-btn.secondary { background: #fff; color: var(--green-dark) !important; border: 1px solid var(--green-border); }
+.nx-btn.secondary:hover { background: var(--green-light); }
+.nx-btn.danger { background: #fff; color: var(--error) !important; border: 1px solid #f3c1bc; }
+.nx-btn.danger:hover { background: var(--error-bg); }
+.nx-btn.small { padding: 8px 14px; font-size: 13px; }
+.nx-btn.block { display: block; width: 100%; text-align: center; }
+.nx-msg { border-radius: 10px; padding: 14px 16px; margin-bottom: 22px; font-size: 14px; font-weight: 600; }
+.nx-msg.error { background: var(--error-bg); color: #8a1c13; border: 1px solid var(--error); }
+.nx-msg.success { background: var(--green-light); color: var(--green-dark); border: 1px solid var(--green-border); }
+.nx-msg.info { background: var(--warn-bg); color: var(--warn); border: 1px solid #f0dca6; font-weight: 500; }
+
+/* ---------- Tablas ---------- */
+.nx-tablewrap { overflow-x: auto; }
+.nx-table { width: 100%; border-collapse: collapse; }
+.nx-table th, .nx-table td { text-align: left; padding: 15px 14px; border-bottom: 1px solid #edf0ee; font-size: 14px; vertical-align: middle; }
+.nx-table th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; background: #fafcfb; }
+.nx-table tr:last-child td { border-bottom: 0; }
+.nx-table td:not(:first-child) { white-space: nowrap; }
+.nx-table small { color: var(--muted); }
+.nx-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.nx-actions form { margin: 0; }
+.nx-empty { background: #fff; border: 1px dashed #cbd8d2; border-radius: 16px; padding: 60px 20px; text-align: center; color: var(--muted); }
+.nx-empty .icon { font-size: 40px; margin-bottom: 14px; display: block; }
+.nx-empty strong { display: block; color: var(--text); margin-bottom: 6px; font-size: 17px; }
+
+/* ---------- Etiquetas ---------- */
+.nx-badge { display: inline-block; border-radius: 20px; padding: 4px 10px; font-size: 12px; font-weight: 700;
+            background: var(--green-light); color: var(--green-dark); border: 1px solid var(--green-border); }
+.nx-badge.PENDING { background: var(--warn-bg); color: var(--warn); border-color: #f0dca6; }
+.nx-badge.REJECTED, .nx-badge.CANCELLED { background: var(--error-bg); color: var(--error); border-color: #f3c1bc; }
+.nx-tags { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 12px 0; }
+.nx-tag { font-size: 12px; color: #4d5a54; background: #f1f5f3; border-radius: 20px; padding: 5px 10px; font-weight: 500; }
+.nx-price { font-weight: 750; font-size: 18px; }
+.nx-price small { font-weight: 400; color: var(--muted); font-size: 13px; }
+
+/* ---------- Buscador ---------- */
+.nx-filters { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 28px; margin-bottom: 50px;
+              box-shadow: 0 8px 30px rgba(22, 130, 93, 0.06); }
+.nx-filters h2 { font-size: 23px; margin-bottom: 18px; }
+.nx-filters .nx-field { margin-bottom: 0; }
+.nx-filters .nx-row { margin-bottom: 18px; }
+.nx-filters .nx-chips { margin-bottom: 22px; }
+.nx-filters .nx-field > label { font-size: 13px; font-weight: 650; }
+.nx-filters input[type="text"], .nx-filters input[type="number"], .nx-filters input[type="date"], .nx-filters select {
+    width: 100%; padding: 13px 14px; border: 1px solid #dce2df; border-radius: 9px; font-size: 14px; outline: none; background: #fff; }
+.nx-filters input:focus, .nx-filters select:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(22,130,93,.10); }
+.nx-filters .nx-field { display: flex; flex-direction: column; gap: 8px; }
+.nx-search { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 12px; background: #fff; border: 1px solid var(--border);
+             border-radius: 16px; padding: 16px; margin-top: 30px; max-width: 1000px; align-items: end; box-shadow: 0 12px 40px rgba(22,130,93,.10); }
+.nx-search .nx-field { margin: 0; }
+@media (max-width: 850px) { .nx-search { grid-template-columns: 1fr 1fr; } }
+
+/* ---------- Tarjetas de alojamiento ---------- */
+.nx-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 22px; }
+.nx-prop { background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: .25s; display: flex; flex-direction: column; }
+.nx-prop:hover { transform: translateY(-5px); border-color: #bedbce; box-shadow: 0 15px 35px rgba(25, 70, 52, .09); }
+.nx-prop .visual { height: 150px; background: linear-gradient(145deg, #eff9f4, #dcefe6); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.nx-prop .visual img { width: 100%; height: 100%; object-fit: cover; }
+.nx-prop .big { width: 72px; height: 72px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 37px; box-shadow: 0 8px 25px rgba(22,130,93,.10); }
+.nx-prop .body { padding: 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.nx-prop h3 { font-size: 18px; }
+.nx-prop .meta { color: var(--muted); font-size: 14px; }
+.nx-prop .foot { margin-top: auto; padding-top: 16px; border-top: 1px solid #edf0ee; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+
+/* ---------- Detalle ---------- */
+.nx-detail { display: grid; grid-template-columns: 1fr 360px; gap: 30px; align-items: start; }
+@media (max-width: 900px) { .nx-detail { grid-template-columns: 1fr; } }
+.nx-banner { height: 300px; border-radius: 18px; background: linear-gradient(145deg, #eff9f4, #dcefe6); display: flex; align-items: center;
+             justify-content: center; margin-bottom: 26px; overflow: hidden; border: 1px solid var(--border); }
+.nx-banner img { width: 100%; height: 100%; object-fit: cover; }
+.nx-banner .big { width: 110px; height: 110px; background: #fff; border-radius: 30px; display: flex; align-items: center; justify-content: center;
+                  font-size: 56px; box-shadow: 0 8px 25px rgba(22,130,93,.12); }
+.nx-title h1 { font-size: 32px; letter-spacing: -1px; margin-bottom: 8px; }
+.nx-booking { position: sticky; top: 96px; }
+.nx-policy { font-size: 13px; color: var(--muted); margin-top: 8px; }
+.nx-back { display: inline-block; margin-bottom: 20px; font-size: 14px; font-weight: 600; text-decoration: none; }
+.nx-summary { display: grid; gap: 10px; margin: 18px 0; }
+.nx-summary div { display: flex; justify-content: space-between; font-size: 14px; border-bottom: 1px solid #edf0ee; padding-bottom: 10px; }
+.nx-summary span:first-child { color: var(--muted); }
+
+/* ---------- Pasos (portada) ---------- */
+.nx-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+.nx-steps .nx-card { margin-bottom: 0; }
+.nx-steps .icon { width: 52px; height: 52px; border-radius: 14px; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 16px; }
+
+
+/* ---------- Ajustes para properties.html (que tiene su propio CSS embebido) ---------- */
+header .brand { flex-shrink: 0; margin-right: 24px; }
+header nav { gap: 22px; flex-wrap: nowrap; }
+header nav a, header nav .nx-user, header nav .nx-linkbtn { white-space: nowrap; }
+.publish-card input[type="number"], .publish-card input[type="url"] {
+    width: 100%; padding: 13px 14px; border: 1px solid #dce2df; border-radius: 9px; font-size: 14px;
+    color: var(--text); background: #fff; outline: none; transition: .2s; font-family: inherit; }
+.publish-card input[type="number"]:focus, .publish-card input[type="url"]:focus {
+    border-color: var(--green); box-shadow: 0 0 0 3px rgba(22,130,93,.10); }
+.publish-card .nx-chip { font-weight: 500; }
+.publish-card .nx-chip span { font-weight: 500; }
+
+/* ---------- Pie ---------- */
+.nx footer { background: #103d30; color: #c7ddd4; padding: 35px 7%; display: flex; justify-content: space-between; font-size: 13px; gap: 10px; }
+.nx footer strong { color: #fff; }
+
+@media (max-width: 700px) {
+    .nx nav { display: none; }
+    .nx header { padding: 0 5%; }
+    .nx .hero { padding: 45px 6%; }
+    .nx main { width: 90%; }
+    .nx-card { padding: 24px; }
+    .nx footer { flex-direction: column; }
+}
