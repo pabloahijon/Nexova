@@ -84,7 +84,7 @@ void rechazarTituloConEspacios() {
     PropertyService service = new PropertyService(repository);
 
     Property inmueble = new Property(
-            "   ",
+            "Mi piso",
             "Madrid",
             "PISO",
             "Piso luminoso"

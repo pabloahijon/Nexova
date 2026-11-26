@@ -179,9 +179,9 @@ Las pruebas implementadas deberían, cuando resulte aplicable:
 .\mvnw.cmd verify
 ```
 
-- **Resultado antes del defecto:**  
-- **Resultado con el defecto:**  
-- **Resultado tras la corrección:**  
+-**Resultado antes del defecto: **
+- **Resultado con el defecto:**  test
+- **Resultado tras la corrección:**  verify
 
 > La finalidad no es romper el proyecto sin motivo, sino demostrar que la prueba puede detectar el defecto que afirma proteger.
 
@@ -221,38 +221,38 @@ Las pruebas implementadas deberían, cuando resulte aplicable:
 
 > Registrar aquí la evidencia mínima de que el conjunto de pruebas puede ejecutarse de forma reproducible fuera del IDE.
 
-- **Fecha de verificación:**  
-- **Rama / commit verificado:**  
-- **Comandos ejecutados:**
+- **Fecha de verificación:**  18/11/2026
+- **Rama / commit verificado:**  docs/documentacion-test
+- **Comandos ejecutados:** 
 
 ```powershell
 .\mvnw.cmd test
 .\mvnw.cmd verify
 ```
 
-- **Resultado de `test`:**  
-- **Resultado de `verify`:**  
-- **Número de tests ejecutados:**  
-- **Fallos o errores relevantes:**  
+- ![Resultado de `test`:](docs/evidences/s7/Resultado_defecto_test)
+- ![Resultado de `verify`:](dosc/evidences/s7/Resultado_defecto_verify.png)  
+- **Número de tests ejecutados:**  11
+- **Fallos o errores relevantes:**  0
 - **Informe Surefire revisado:** `target/surefire-reports/`  
-- **Evidencia / enlace:**  
+- **Evidencia / enlace:**  https://github.com/pabloahijon/Nexova/commit/75f58e4e60151f5018f24f0041c0eeb9a873e057
 
 ### 10.2 Cobertura — S7 · JaCoCo
 
 - **Informe generado:** `target/site/jacoco/index.html`  
-- **Cobertura observada de forma global:**  
-- **Clase / paquete / comportamiento revisado:**  
+- **Cobertura observada de forma global:** instrucciones 76 % (40 de 168 sin cubrir), ramas 100 % (0 de 8 sin cubrir). 5 clases analizadas, 11 tests ejecutados.
+- **Clase / paquete / comportamiento revisado:** paquete `service`, clase `PropertyService`, método `save(...)`: validación de título y ciudad obligatorios, que es la regla protegida por el defecto deliberado.
 - **Zonas importantes con cobertura insuficiente:**
-  - 
-  - 
+  - Paquete `Web`: 69 % de instrucciones, 3 métodos sin ejecutar. Contiene los controladores y no tiene tests directos.
+  - Clase `RentalplatformApplication` (paquete raíz): 37 %, por el método `main`, que arranca la aplicación.
 
 - **Ramas o casos relevantes no ejercitados:**
-  - 
-  - 
+  - No hay ramas sin recorrer: JaCoCo muestra 0 de 8 ramas sin cubrir, es decir, todas las condiciones de `PropertyService` se ejecutan por sus dos caminos.
+  - Los métodos sin ejecutar del paquete `Web` (3) pueden ocultar casos no probados; se revisan en la justificación.
 
 - **Justificación de zonas no cubiertas cuando proceda:**
-  - 
-  - 
+  - `RentalplatformApplication.main`: es código de arranque de Spring Boot, sin lógica propia. No aporta valor probarlo con un test unitario.
+  - Paquete `Web`: la lógica de negocio está en `service`, que sí está cubierta. Se valorará añadir tests de los controladores si hay requisitos asociados.
 
 > No se exige perseguir un porcentaje concreto por sí mismo. La cobertura debe interpretarse en relación con comportamientos, requisitos, casos de prueba y riesgos reales.
 
