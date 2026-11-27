@@ -230,7 +230,7 @@ Las pruebas implementadas deberían, cuando resulte aplicable:
 .\mvnw.cmd verify
 ```
 
-- ![Resultado de `test`:](docs/evidences/s7/Resultado_defecto_test)
+- ![Resultado de `test`:](docs/evidences/s7/Resultado_defecto_test,png)
 - ![Resultado de `verify`:](dosc/evidences/s7/Resultado_defecto_verify.png)  
 - **Número de tests ejecutados:**  11
 - **Fallos o errores relevantes:**  0
@@ -260,15 +260,18 @@ Las pruebas implementadas deberían, cuando resulte aplicable:
 
 > La cobertura debe provocar una decisión técnica explícita, aunque la decisión sea no añadir ninguna prueba.
 
-- **Carencia o riesgo detectado:**  
-- **Caso(s) del plan afectados:**  
-- **Decisión:** Añadir prueba / Mejorar prueba / Mantener sin cambios / Justificar no cobertura  
-- **Cambio realizado:**  
-- **Motivo:**  
-- **Resultado tras repetir `test` / `verify`:**  
-- **Relación con AI-02, si procede:**  
-- **Evidencia / enlace:**  
-
+- **Carencia o riesgo detectado:** El informe JaCoCo muestra una cobertura global de instrucciones del 76 % y de ramas del 100 %. Las zonas menos ejercitadas son el paquete `Web` (69 %, 3 métodos sin ejecutar, sin tests directos) y `RentalplatformApplication` (37 %, por el método `main`). La clase `PropertyService` alcanza un 87,5 % de instrucciones y un 100 % de ramas. El riesgo principal no es la falta de cobertura de la lógica de validación, sino que una cobertura alta no garantiza que las pruebas detecten defectos reales, y que los controladores web puedan tener errores de enlace (rutas, parámetros, respuesta) no detectados por los tests de servicio.
+- **Caso(s) del plan afectados:** CP-01 a CP-07 (validación de título y ciudad en `PropertyService.save(...)`, FP-01 a FP-03, HU-04). En especial CP-04, trabajado en el Hito 2 (AI-02). No hay casos del plan asociados a los controladores `Web` ni a `main`.
+- **Decisión:** Mantener sin cambios y Justificar no cobertura.
+- **Cambio realizado:** Ninguno en código de producción ni en tests. Se han interpretado los resultados de JaCoCo y se ha documentado la decisión. Los controladores `Web` se registran como pendiente para futuras iteraciones (apartado 11).
+- **Motivo:**
+  - Las ramas de `PropertyService` están cubiertas al 100 % y los casos CP-01 a CP-07 protegen los criterios de aceptación de la HU-04 (válidos, inválidos y límite).
+  - `RentalplatformApplication.main` solo arranca Spring Boot y no contiene lógica propia; un test unitario no aportaría valor.
+  - El paquete `Web` no tiene requisitos ni casos de prueba definidos en el plan; añadir tests solo para subir el porcentaje no protegería ningún comportamiento relevante. Se valorará cuando se amplíen las funcionalidades.
+  - Se prioriza la capacidad real de detección de defectos y la calidad de las aserciones sobre el incremento artificial de la cobertura.
+- **Resultado tras repetir `test` / `verify`:** Sin cambios respecto a 10.1 y 10.2: 11 tests ejecutados, 0 fallos, 0 errores, BUILD SUCCESS y cobertura idéntica, al no haberse modificado código ni pruebas. *(Si repites los comandos hoy, indica la fecha de esta nueva ejecución.)*
+- **Relación con AI-02, si procede:** 
+- **Evidencia / enlace:** `target/site/jacoco/index.html`, [informe JaCoCo](docs/evidences/s7/jacoco_index.png), [AI-02](docs/testing/AI-02-hito-pruebas-verificacion.md) 
 ### 10.4 Sonar — S8 · Contexto para nuevas necesidades de prueba
 
 - Problemas o incidencias que sugieren añadir o revisar pruebas:
