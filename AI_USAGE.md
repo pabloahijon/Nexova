@@ -152,8 +152,8 @@ Las pruebas cubren:
 Para comprobar la eficacia de las pruebas se realizó una demostración verde-rojo-verde:
 
 1. **Verde:** las siete pruebas se ejecutaron correctamente.
-2. **Rojo:** se introdujo temporalmente un defecto sustituyendo `isBlank()` por `isEmpty()` en la validación del título. La prueba CP-04 detectó el defecto y la ejecución falló.
-3. **Verde:** se restauró `isBlank()` y las siete pruebas volvieron a ejecutarse correctamente.
+2. **Rojo:** se modificó temporalmente el dato de entrada de la prueba CP-04, sustituyendo el título formado únicamente por espacios por un título válido ("Mi piso"). La prueba falló al no producirse la excepción esperada.
+3. **Verde:** se restauró el dato de entrada original, formado únicamente por espacios, y se verificó nuevamente el funcionamiento de las pruebas.
 
 Finalmente, se ejecutó `./mvnw clean verify`, obteniendo `BUILD SUCCESS`.
 
@@ -161,7 +161,7 @@ Finalmente, se ejecutó `./mvnw clean verify`, obteniendo `BUILD SUCCESS`.
 
 Se incorporaron siete pruebas unitarias automatizadas y se actualizó el plan de pruebas de Nexova.
 
-La demostración verde-rojo-verde permitió comprobar que las pruebas pueden detectar un defecto real en las validaciones.
+La demostración verde-rojo-verde permitió comprobar que la prueba CP-04 detecta discrepancias entre el comportamiento esperado y el resultado obtenido durante la ejecución, poniendo de manifiesto la importancia de los datos de entrada y de las aserciones utilizadas. Queda pendiente verificar la detección de un defecto introducido directamente en el código de producción.
 
 La IA se utilizó como herramienta de apoyo. La ejecución de los comandos, la comprobación de resultados y las decisiones sobre los cambios se realizaron mediante intervención humana.
 
